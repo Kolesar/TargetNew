@@ -19,15 +19,6 @@ class Plugin extends Base
         Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
     }
 
-    public function getClasses()
-    {
-        return array(
-            'Plugin\TargetNew\Model' => array(
-                'TargetNew',
-            )
-        );
-    }
-
     public function getPluginName()
     {
         return 'TargetNew';
