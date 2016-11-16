@@ -7,8 +7,6 @@ use Kanboard\Core\Translator;
 
 class Plugin extends Base
 {
-    private $base_target;
-
     public function initialize()
     {
         $this->helper->register('TargetNewHelper', '\Kanboard\Plugin\TargetNew\Helper\TargetNewHelper');
