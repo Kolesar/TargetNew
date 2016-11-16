@@ -13,20 +13,11 @@ class Plugin extends Base
 
     public function initialize()
     {
-$gg = $this->userSession->getAll();
-// // print_r($this->userSession);
-// $this->logger->debug($gg);
         $this->dispatcher->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onLoginSuccess'));
+
         $this->helper->register('TargetNewHelper', '\Kanboard\Plugin\TargetNew\Helper\TargetNewHelper');
         $this->template->hook->attach('template:user:sidebar:actions', 'TargetNew:user/sidebar/actions');
-
-// $this->logger->debug(" ==================================");
-// $this->logger->debug($this->base_target);
-//         if ($this->base_target == 1) {
-// $this->logger->debug(" -------------------------------------------------------------------------------");
-            $this->template->hook->attach('template:layout:head', 'TargetNew:layout/head');
-//         }
-
+        $this->template->hook->attach('template:layout:head', 'TargetNew:layout/head');
     }
 
     public function onStartup()
@@ -37,11 +28,6 @@ $gg = $this->userSession->getAll();
     public function onLoginSuccess(AuthSuccessEvent $event) {
         $user_id = $this->userSession->getId();
         $user = $this->userModel->getById($user_id);
-
-//         if(isset($user['base_target'])) {
-// $this->logger->debug(" ++++++++++++++++++++++++++++");
-//             $this->base_target = $user['base_target'];
-//         }
     }
 
     public function getClasses()
